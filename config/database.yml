@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: 123456
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: mycryptoblog_development
+
+test:
+  <<: *default
+  database: mycryptoblog_test
+
+production:
+  <<: *default
+  database: mycryptoblog_production
+  username: mycryptoblog
+  password: <%= ENV['MYCRYPTOBLOG_DATABASE_PASSWORD'] %>
