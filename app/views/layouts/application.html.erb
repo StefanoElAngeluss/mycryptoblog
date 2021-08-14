@@ -8,14 +8,21 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    
+    <%# Bootstrap CSS %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <%# Stripe %>
     <script src="https://js.stripe.com/v3/"></script>
+    <%# Bootstrap JS %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <br>
-    <%= link_to "Produits", products_path %>
-    <hr>
-    <%= yield %>
+    <div class="container">
+      <br>
+      <%= link_to "Produits", products_path %>
+      <hr>
+      <%= yield %>
+    </div>
   </body>
 </html>
