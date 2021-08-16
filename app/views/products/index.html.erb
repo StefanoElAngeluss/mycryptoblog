@@ -2,11 +2,12 @@
 
 <h1>Products</h1>
 
-<table class="table table-stripped">
+<table class="table table-responsive table-stripped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <th>Product Id</th>
       <th>Price</th>
       <th>Paiement</th>
       <th>Vendus</th>
@@ -18,7 +19,8 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product %></td>
-        <td><%= truncate(product.description, length: 100) %></td>
+        <td><%= truncate(product.description, length: 50) %></td>
+        <td><%= product.stripe_product_id %></td>
         <td><%= number_to_currency(product.price/100) %></td>
         <td>
           <%= button_to "Achetez maintenant!",

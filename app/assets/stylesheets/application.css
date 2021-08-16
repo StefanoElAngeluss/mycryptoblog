@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ .bouton_editer{
+  margin: 0 270px 0 0;
+ }
+ @media screen and (max-width: 600px) {
+  margin: 0 20px 0 0;
+  flex: none;
+ }
