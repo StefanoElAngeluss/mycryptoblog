@@ -1,19 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Name: </strong>
   <%= @product.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>ID du produit: </strong>
+  <%= @product.stripe_product_id %>
+</p>
+
+<p>
+  <strong>ID du prix: </strong>
+  <%= @product.stripe_price_id %>
+</p>
+
+<p>
+  <strong>Description: </strong>
   <%= @product.description %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>Price: </strong>
   <%= number_to_currency(@product.price/100) %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Editer', edit_product_path(@product), class: "btn btn-sm btn-outline-warning" %> |
+<%= link_to "Retour à l'accueil", products_path, class: "btn btn-sm btn-outline-danger" %>
