@@ -1,8 +1,7 @@
 <h1 class="text-success">Félicitation votre commande é bien été traité.</h1>
 
-<% if params[:session_id].present? %>
-  <%# @session = Stripe::Checkout::Session.retrieve(params[:session_id]) %>
-  <%#= @session.payment_intent %>
-  <%#= Stripe::PaymentIntent.retrieve(@session.payment_intent) %>
-
-<% end %>
+Status Final: <%= @session_with_expand.payment_status %>
+<br>
+Payé:
+<%= @session_with_expand.amount_total/100.to_f %>
+<%= @session_with_expand.currency %>
