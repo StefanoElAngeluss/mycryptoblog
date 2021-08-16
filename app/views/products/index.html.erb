@@ -29,6 +29,7 @@
                         checkout_create_path,
                         params: {id: product.id},
                         remote: true,
+                        data: { disable_with: "validating..." },
                         class: "btn btn-sm btn-outline-primary" %>
         </td>
         <td><%= product.sales_count %></td>
