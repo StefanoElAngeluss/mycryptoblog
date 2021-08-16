@@ -30,6 +30,12 @@
       <%= link_to "Github", "https://github.com/StefanoElAngeluss/mycryptoblog", target: "_blank" %>
       <%= render "navbar/navbar" %>
       <hr>
+      <h1>Votre Panier</h1>
+      <% @cart.each do |product| %>
+        <%= product.name %>
+        --
+      <% end %>
+      <hr>
       <%= yield %>
     </div>
   </body>
