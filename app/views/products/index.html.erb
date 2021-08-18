@@ -1,11 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<h1 class="d-flex justify-content-between">
+  Produits
+  <span>
+    <%= link_to 'Ajouter un nouveau produit', new_product_path, class: "btn btn-outline-primary" %>
+  </span>
+</h1>
 
 <table class="table table-responsive table-stripped">
   <thead>
     <tr>
       <th>Nom</th>
+      <th>Devise</th>
       <th>Prix</th>
       <th>Description</th>
       <th>ID du produit</th>
@@ -20,6 +26,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product %></td>
+        <td><%= product.currency %></td>
         <td><%= number_to_currency(product.price/100) %></td>
         <td><%= truncate(product.description, length: 30) %></td>
         <td><%= truncate(product.stripe_product_id, length: 15) %></td>
@@ -32,13 +39,16 @@
           <% end %>
         </td>
         <td><%= product.sales_count %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to " ", product,
+                      class: "far fa-eye text-primary" %></td>
+        <td><%= link_to " ", edit_product_path(product),
+                      class: "far fa-edit text-warning" %></td>
         <td>
-          <%= link_to "Destroy",
+          <%= link_to " ",
                       product,
                       method: :delete,
-                      data: { confirm: 'Êtes vous sûre de vouloir supprimer ce produit ?' } %>
+                      data: { confirm: 'Êtes vous sûre de vouloir supprimer ce produit ?' },
+                      class: "fas fa-trash text-danger" %>
         </td>
       </tr>
     <% end %>
@@ -47,7 +57,7 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+
 
 <hr>
 
