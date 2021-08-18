@@ -16,6 +16,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 ## AJOUT PERSONNEL
 gem 'stripe'
 gem 'devise'
+gem 'money-rails'
 
 
 group :development, :test do
