@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "prix", to: "static_pages#prix"
   # Checkout subscription Post
   post "subscription/create", to: "subscription#create", as: "subscription_create"
+  post "billing_portal/create", to: "billing_portal#create", as: "billing_portal_create"
 
   # Products
   resources :products
