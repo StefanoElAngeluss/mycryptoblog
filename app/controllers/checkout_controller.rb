@@ -1,21 +1,18 @@
 class CheckoutController < ApplicationController
 
   def create
-    if @cart.pluck(:currency).uniq.length > 1
-      redirect_to products_path, alert: "Vous ne pouvez pas sélectionner des produits dans des devises différentes lors d'une seule et même caisse."
-    else
-      @session = Stripe::Checkout::Session.create({
-        customer: current_user.stripe_customer_id,
-        payment_method_types: ['card'],
-        line_items: @cart.collect { |item| item.to_builder.attributes! },
-        allow_promotion_codes: true,
-        mode: 'payment',
-        success_url: success_url + "?session_id={CHECKOUT_SESSION_ID}",
-        cancel_url: cancel_url,
-      })
-      respond_to do |format|
-        format.js
-      end
+    @session = Stripe::Checkout::Session.create({
+      customer: current_user.stripe_customer_id,
+      success_url: posts_url,
+      cancel_url: prix_url,
+      payment_method_types: ['card'],
+      line_items: [
+        {price: params[:prix], quantity: 1},
+      ],
+      mode: 'subscription',
+    })
+    respond_to do |format|
+      format.js
     end
   end
 
