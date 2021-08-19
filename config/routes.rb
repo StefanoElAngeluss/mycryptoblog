@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # Posts
   resources :posts
   get "prix", to: "static_pages#prix"
+  # Checkout subscription Post
+  post "subscription/create", to: "subscription#create", as: "subscription_create"
 
   # Products
   resources :products
@@ -19,5 +21,6 @@ Rails.application.routes.draw do
   get "cancel", to: "checkout#cancel"
   # Webhooks
   resources :webhooks, only: [:create]
+
 
 end
