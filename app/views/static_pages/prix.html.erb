@@ -2,11 +2,11 @@
 
 <% @prix = Stripe::Price.list(lookup_keys: ["basic_month", "medium_year"], expand: ["data.product"]) %>
 <% @prix.each do |prix| %>
-  <br>
   <b><%= prix.product.name %> :</b> 
   <%= prix.id %> - 
   <b>
     <%= number_to_currency(prix.unit_amount/100) %> / 
     <%= prix.recurring.interval %>
   </b>
+  <%= link_to "Souscrire", subscription_create_path(prix: prix.id), method: :post, remote: true, class: "btn btn-sm btn-primary mb-3" %><br>
 <% end %>

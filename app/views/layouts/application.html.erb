@@ -28,11 +28,8 @@
       <p class="alert"><%#= alert %></p>
       <br>
       <%= link_to "Articles", posts_path %>
-      <%= link_to "Prix", prix_path %>
+      <%= link_to "Abonnement", prix_path %>
       <%= link_to "Produits", products_path %>
-      <% if current_user %>
-        <%= link_to "Souscription", subscription_create_path, method: :post, remote: true %>
-      <% end %>
       <%= link_to "Github", "https://github.com/StefanoElAngeluss/mycryptoblog", target: "_blank" %>
       <%= render "navbar/navbar" %>
       <hr>
