@@ -1,0 +1,12 @@
+<h1>Prix</h1>
+
+<% @prix = Stripe::Price.list(lookup_keys: ["basic_month", "medium_year"], expand: ["data.product"]) %>
+<% @prix.each do |prix| %>
+  <br>
+  <b><%= prix.product.name %> :</b> 
+  <%= prix.id %> - 
+  <b>
+    <%= number_to_currency(prix.unit_amount/100) %> / 
+    <%= prix.recurring.interval %>
+  </b>
+<% end %>

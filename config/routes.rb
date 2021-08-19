@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # Posts
   resources :posts
+  get "prix", to: "static_pages#prix"
 
   # Products
   resources :products

@@ -1,7 +1,12 @@
 <% if current_user %>
   <%= link_to current_user.username, edit_user_registration_path %>
   <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
-  <%= current_user.stripe_customer_id %>
+  <br><br>
+  <b>ID du Client :</b> <%= current_user.stripe_customer_id %>
+  <br>
+  <b>Abonnement :</b> <%= current_user.subscription_status %>
+  <br>
+  <b>Plan :</b> <%= current_user.plan %>
 <% else %>
   <%= link_to "Connexion", new_user_session_path %>
   <%= link_to "Inscription", new_user_registration_path %>  
