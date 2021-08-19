@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   root "products#index"
 
+  # Posts
+  resources :posts
+
   # Products
   resources :products
   # Checkout Product

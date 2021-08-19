@@ -23,7 +23,7 @@
             <i class="far fa-user" style="margin: 4px 0 4px 0!important;"></i>
           </span>
         </div>
-        <%= form.text_field :name, class: "form-control", id: "inlineFormInputGroup", placeholder: "Nom du produit" %>
+        <%= form.text_field :name, class: "form-control", id: "inlineFormInputGroup", placeholder: "Nom du produit", required: true %>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
             <i class="far fa-money-bill" style="margin: 4px 0 4px 0!important;"></i>
           </span>
         </div>
-        <%= form.text_field :currency, class: "form-control", id: "inlineFormInputGroup", placeholder: "Devise du pays pour la vente" %>
+        <%= form.text_field :currency, class: "form-control", id: "inlineFormInputGroup", placeholder: "Devise du pays pour la vente", required: true %>
       </div>
       <span id="passwordHelpInline" class="form-text text-danger">
         Mettre une devise EUR ou USD etc...
@@ -65,7 +65,7 @@
             <i class="far fa-euro-sign" style="margin: 4px 0 4px 0!important;"></i>
           </span>
         </div>
-        <%= form.text_field :price_cents, class: "form-control", id: "inlineFormInputGroup", placeholder: "Prix du produit" %>
+        <%= form.text_field :price_cents, class: "form-control", id: "inlineFormInputGroup", placeholder: "Prix du produit", required: true %>
       </div>
       <span id="passwordHelpInline" class="form-text text-danger">
         Mettre un prix entre 10 et 20 €.
@@ -85,7 +85,7 @@
     <div class="col-auto form-group">
       <label class="sr-only" for="inlineFormInputGroup"><%= form.label :description %> :</label>
       <div class="input-group mb-2">
-        <%= form.text_area :description, class: "form-control", id: "inlineFormInputGroup", placeholder: "Description du produit", rows: 6 %>
+        <%= form.text_area :description, class: "form-control", id: "inlineFormInputGroup", placeholder: "Description du produit", rows: 6, required: true %>
       </div>
       <span id="passwordHelpInline" class="form-text text-danger">
         Description du produit entre 10 et 255 mots autorisés!.

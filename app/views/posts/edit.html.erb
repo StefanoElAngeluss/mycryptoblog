@@ -1,0 +1,71 @@
+<h1>Editer l'article "<%= @post.title %>"</h1>
+
+<%= form_with(model: @post) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% @post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup"><%= form.label :title %> :</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="far fa-user" style="margin: 4px 0 4px 0!important;"></i>
+          </span>
+        </div>
+        <%= form.text_field :title, class: "form-control", id: "inlineFormInputGroup", placeholder: "Titre de l'article" %>
+      </div>
+    </div>
+
+    <!--<div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>-->
+
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup"><%= form.label :content %> :</label>
+      <div class="input-group mb-2">
+        <%= form.text_area :content, class: "form-control", id: "inlineFormInputGroup", placeholder: "Contenu du produit", rows: 8 %>
+      </div>
+    </div>
+
+    <!--<div class="field">
+      <%= form.label :content %>
+      <%= form.text_area :content, class: "form-control" %>
+    </div>-->
+
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup"><%= form.label :premium %> :</label>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="far fa-registered" style="margin: 4px 0 4px 0!important;"></i>
+          </span>
+        </div>
+        <%= form.check_box :premium, class: "form-control", id: "inlineFormInputGroup", placeholder: "Contenu du produit" %>
+      </div>
+    </div>
+
+    <!--<div class="field">
+      <%= form.label :premium %>
+      <%= form.check_box :premium %>
+    </div>-->
+
+    <div class="actions">
+      <%= form.submit "Modifier l'article", class: "btn btn-success" %> | 
+      <%= link_to "Voir l'article", @post, class: "btn btn-info" %> |
+      <%= link_to "Retour à l'accueil", posts_path, class: "btn btn-danger" %>
+    </div>
+
+  </div>
+
+<% end %>

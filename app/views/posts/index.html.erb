@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table class="table table-responsive table-stripped">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Contenu</th>
+      <th>Premium ?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= truncate(post.content, length: 40) %></td>
+        <td><%= post.premium %></td>
+        <td><%= link_to " ", post,
+                      class: "far fa-eye text-primary" %></td>
+        <td><%= link_to " ", edit_post_path(post),
+                      class: "far fa-edit text-warning" %></td>
+        <td>
+          <%= link_to " ",
+                      post,
+                      method: :delete,
+                      data: { confirm: 'Êtes vous sûre de vouloir supprimer cet article ?' },
+                      class: "fas fa-trash text-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
