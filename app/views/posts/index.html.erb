@@ -17,7 +17,13 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= truncate(post.content, length: 40) %></td>
-        <td><%= post.premium %></td>
+        <td>
+        <% if post.premium === true %>
+          <button type="button" class="btn btn-sm btn-success"><%= post.premium = "Abonné(e)" %></button>
+        <% else %>
+          <button type="button" class="btn btn-sm btn-warning"><%= post.premium = "Non abonné(e)" %></button>
+        <% end %>
+        </td>
         <td><%= link_to " ", post,
                       class: "far fa-eye text-primary" %></td>
         <td><%= link_to " ", edit_post_path(post),

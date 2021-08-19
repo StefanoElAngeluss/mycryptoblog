@@ -17,6 +17,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'stripe'
 gem 'devise'
 gem 'money-rails'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 
 group :development, :test do
