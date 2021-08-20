@@ -37,14 +37,13 @@ class WebhooksController < ApplicationController
     when 'customer.created'
       customer = event.data.object
       @user = User.find_by(email: customer.email)
-      @user.update(stripe_customer_id: customer.id)
+      @user.update(stripe_customer_id: customer.id, subscription_status: "active")
     when 'customer.subscription.updated', 'customer.subscription.deleted', 'customer.subscription.created'
       subscription = event.data.object
       @user = User.find_by(stripe_customer_id: subscription.customer)
       @user.update(
         subscription_status: subscription.status,
         plan: subscription.items.data[0].price.lookup_key,
-        current_period_end: Time.at(subscription.current_period_end).to_datetime,
       )
 
     end
