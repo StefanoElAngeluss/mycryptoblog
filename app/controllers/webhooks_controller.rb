@@ -27,16 +27,16 @@ class WebhooksController < ApplicationController
       customer = event.data.object
       @user = User.find_by(email: customer.email)
       @user.update(stripe_customer_id: customer.id)
-    # when 'checkout.session.completed'
-    #   session = event.data.object
-    #   @user = User.find_by(stripe_customer_id: customer.id)
-    #   @user.update(subscription_status: "active")
+    when 'checkout.session.completed'
+      session = event.data.object
+      @user = User.find_by(stripe_customer_id: customer.id)
+      @user.update(subscription_status: "active")
 
-    #   session_with_expand = Stripe::Checkout::Session.retrieve({ id: session.id, expand: ["line_items"]})
-    #   session_with_expand.line_items.data.each do |line_item|
-    #     product = Product.find_by(stripe_product_id: line_item.price.product)
-    #     product.increment!(:sales_count)
-    #   end
+      session_with_expand = Stripe::Checkout::Session.retrieve({ id: session.id, expand: ["line_items"]})
+      session_with_expand.line_items.data.each do |line_item|
+        product = Product.find_by(stripe_product_id: line_item.price.product)
+        product.increment!(:sales_count)
+      end
 
     when 'customer.subscription.updated', 'customer.subscription.deleted', 'customer.subscription.created'
       subscription = event.data.object
