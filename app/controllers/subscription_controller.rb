@@ -1,7 +1,6 @@
 class SubscriptionController < ApplicationController
 
   def create
-    
     @session = Stripe::Checkout::Session.create({
       customer: current_user.stripe_customer_id,
       success_url: posts_url,

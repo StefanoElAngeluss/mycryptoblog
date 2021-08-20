@@ -1,24 +1,6 @@
 class CheckoutController < ApplicationController
 
   def create
-    payload = request.body.read
-    sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-    event = nil
-
-    begin
-      event = Stripe::Webhook.construct_event(
-        payload, sig_header, Rails.application.credentials[:stripe][:webhook]
-      )
-    rescue JSON::ParserError => e
-      status 400
-      return
-    rescue Stripe::SignatureVerificationError => e
-      # Invalid signature
-      puts "Signature error"
-      p e
-      return
-    end
-
     if @cart.pluck(:currency).uniq.length > 1
       redirect_to products_path, alert: "Vous ne pouvez pas sélectionner des produits dans des devises différentes lors d'une seule et même caisse."
     else

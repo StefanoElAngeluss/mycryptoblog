@@ -4,13 +4,13 @@
   <br><br>
   <b>ID du Client :</b> <%= current_user.stripe_customer_id %>
   <br>
-  <b>Abonnement :</b> <%= current_user.subscription_status %>
-  <br>
   <% if current_user.plan.present? %>
     <b>Plan :</b> <%= current_user.plan %>
   <% else %>
     <b>Plan :</b> pas de plan
   <% end %>
+  <br>
+  <b>Abonnement :</b> <%= current_user.subscription_status %>
 <% else %>
   <%= link_to "Connexion", new_user_session_path %>
   <%= link_to "Inscription", new_user_registration_path %>  

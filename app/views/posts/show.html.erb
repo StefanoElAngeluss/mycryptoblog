@@ -8,11 +8,15 @@
 <p>
   <strong>Content:</strong>
   <%= @post.content %>
+  <p>
+    <b>Créer le :</b> <%= l(@post.created_at.to_date, format: :long) %>
+  </p>
 </p>
 
 <p>
   <strong>Premium:</strong>
-  <%= @post.premium %>
+  <%= premium_label(@post.premium) %>
+  <%#= @post.premium %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

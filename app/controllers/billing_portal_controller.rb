@@ -1,4 +1,6 @@
 class BillingPortalController < ApplicationController
+
+  Stripe.api_key = Rails.application.credentials.dig(:stripe, :webhook)
   
   def create
     portal_session = Stripe::BillingPortal::Session.create({
