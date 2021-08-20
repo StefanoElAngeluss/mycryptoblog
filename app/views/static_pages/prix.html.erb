@@ -1,6 +1,5 @@
 <h1>Prix</h1>
 
-<% @prix = Stripe::Price.list(lookup_keys: ["basic_month", "medium_year"], expand: ["data.product"]) %>
 <% @prix.each do |prix| %>
   <b><%= prix.product.name %> :</b> 
   <%= prix.id %> - 
@@ -8,5 +7,6 @@
     <%= number_to_currency(prix.unit_amount/100) %> / 
     <%= prix.recurring.interval %>
   </b>
-  <%= link_to "Souscrire", subscription_create_path(prix: prix.id), method: :post, remote: true, class: "btn btn-sm btn-primary mb-3" %><br>
+  <%= link_to "Payer #{prix.unit_amount/100} per #{prix.recurring.interval}", subscription_create_path(prix: prix.id), method: :post, remote: true, data: {disable_with: "Chargement..."} %>
+  <%#= link_to "Souscrire", subscription_create_path(prix: prix.id), method: :post, remote: true, class: "btn btn-sm btn-primary mb-3" %><br>
 <% end %>
